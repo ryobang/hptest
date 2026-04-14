@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中根税務会計事務所 — Belong with numbers you trust.</title>
+<link rel="stylesheet" href="ja-contracts.css">
+<style>
+  :root{
+    --rausch:#ff385c;
+    --rausch-deep:#e00b41;
+    --ink:#222;
+    --ink-2:#3f3f3f;
+    --muted:#6a6a6a;
+    --border:#dddddd;
+    --border-soft:#ebebeb;
+    --surface:#f7f7f7;
+    --surface-2:#f2f2f2;
+    --white:#fff;
+    --luxe:#460479;
+    --plus:#92174d;
+    --shadow:rgba(0,0,0,.02) 0 0 0 1px, rgba(0,0,0,.04) 0 2px 6px, rgba(0,0,0,.1) 0 4px 8px;
+    --shadow-hover:rgba(0,0,0,.08) 0 4px 12px;
+    --font:"Airbnb Cereal VF","Circular","-apple-system","Hiragino Sans","Yu Gothic","Noto Sans JP",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);background:var(--white);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--ink);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border-soft)}
+  .nav-in{max-width:1280px;margin:0 auto;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:22px;color:var(--rausch);letter-spacing:-.3px}
+  .logo svg{width:28px;height:28px;fill:var(--rausch)}
+  nav ul{list-style:none;display:flex;gap:8px;align-items:center}
+  nav a.l{padding:10px 16px;border-radius:22px;font-weight:500;font-size:14px;color:var(--ink);transition:background .15s}
+  nav a.l:hover{background:var(--surface-2);text-decoration:none}
+  .btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;border:0;transition:transform .15s,filter .2s,background .2s}
+  .btn.rausch{background:linear-gradient(90deg,var(--rausch) 0%,var(--rausch-deep) 100%);color:#fff;padding:14px 24px;border-radius:8px;font-size:16px}
+  .btn.rausch:hover{filter:brightness(1.05);text-decoration:none}
+  .btn.dark{background:var(--ink);color:#fff;padding:14px 24px;border-radius:8px;font-size:16px}
+  .btn.dark:hover{background:#000;text-decoration:none}
+  .btn.ghost{background:var(--white);color:var(--ink);border:1px solid var(--border);padding:13px 22px;border-radius:8px;font-size:16px;font-weight:600}
+  .btn.ghost:hover{background:var(--surface-2);text-decoration:none}
+
+  section{padding:96px 28px;border-bottom:1px solid var(--border-soft)}
+  .wrap{max-width:1280px;margin:0 auto}
+
+  .eyebrow{font-size:13px;font-weight:600;color:var(--rausch);margin-bottom:14px;letter-spacing:.02em}
+  h1,h2,h3{color:var(--ink);font-weight:700}
+  h1{font-size:clamp(42px,6vw,64px);letter-spacing:-.44px}
+  h2{font-size:clamp(30px,4vw,40px);letter-spacing:-.3px}
+  h3{font-size:22px;font-weight:600;letter-spacing:-.44px}
+  p.lead{font-size:18px;color:var(--ink-2);max-width:640px;margin-top:16px}
+  p.body{color:var(--ink-2);font-size:15px}
+
+  /* HERO — search bar style */
+  .hero{padding:96px 28px 72px}
+  .hero .cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .search{margin-top:44px;background:var(--white);box-shadow:var(--shadow);border-radius:32px;display:flex;align-items:stretch;max-width:900px;padding:8px;gap:0}
+  .search .cell{flex:1;padding:14px 22px;display:flex;flex-direction:column;gap:2px;border-radius:24px;cursor:pointer;transition:background .15s}
+  .search .cell:hover{background:var(--surface-2)}
+  .search .cell b{font-size:12px;font-weight:600;color:var(--ink)}
+  .search .cell span{font-size:14px;color:var(--muted)}
+  .search .cell+.cell{border-left:1px solid var(--border-soft)}
+  .search .btn-search{align-self:center;margin-right:6px;background:var(--rausch);color:#fff;border:0;border-radius:999px;padding:0 20px;height:48px;font-weight:600;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+  .search .btn-search::before{content:"⌕";font-size:20px}
+  @media (max-width:860px){.search{flex-direction:column;border-radius:20px}.search .cell+.cell{border-left:0;border-top:1px solid var(--border-soft)}.search .btn-search{margin:8px;justify-content:center;height:52px}}
+
+  /* Category pills */
+  .cats{display:flex;gap:10px;margin-top:48px;overflow-x:auto;padding:4px 0 14px;border-bottom:1px solid var(--border-soft)}
+  .cats::-webkit-scrollbar{height:0}
+  .cat{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 14px;border-radius:12px;cursor:pointer;min-width:88px;color:var(--muted);transition:color .15s,border-color .15s;border-bottom:2px solid transparent}
+  .cat:hover{color:var(--ink)}
+  .cat.active{color:var(--ink);border-bottom-color:var(--ink)}
+  .cat .ic{font-size:26px;line-height:1}
+  .cat .lb{font-size:12px;font-weight:600}
+
+  /* LISTING grid = services */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:36px}
+  .listing{cursor:pointer;transition:transform .2s}
+  .listing:hover{transform:translateY(-2px)}
+  .listing .photo{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:1/1;background:linear-gradient(135deg,#ffe0e0 0%,#ffd0d0 100%)}
+  .listing .photo .emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:80px}
+  .listing .photo .heart{position:absolute;top:14px;right:14px;width:30px;height:30px;background:rgba(0,0,0,.5);color:#fff;border-radius:50%;display:grid;place-items:center;font-size:16px}
+  .listing:nth-child(1) .photo{background:linear-gradient(135deg,#ffd5e0,#ff9db0)}
+  .listing:nth-child(2) .photo{background:linear-gradient(135deg,#c8e6ff,#8bbedc)}
+  .listing:nth-child(3) .photo{background:linear-gradient(135deg,#ffe9c2,#ffc78a)}
+  .listing:nth-child(4) .photo{background:linear-gradient(135deg,#d8f3cc,#8ecb7e)}
+  .listing:nth-child(5) .photo{background:linear-gradient(135deg,#e3d3ff,#b89ce0)}
+  .listing .meta{display:flex;justify-content:space-between;align-items:flex-start;margin-top:14px;gap:10px}
+  .listing .meta h3{font-size:16px;font-weight:600;line-height:1.3;letter-spacing:-.18px}
+  .listing .rating{font-size:14px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap}
+  .listing .rating::before{content:"★";color:var(--ink)}
+  .listing .desc{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.45}
+  .listing .price{font-size:14px;color:var(--ink);margin-top:6px}
+  .listing .price b{font-weight:600}
+  @media (max-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.grid{grid-template-columns:1fr}}
+
+  /* Principles — host-style */
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+  .t-card{background:var(--white);border-radius:20px;padding:32px;box-shadow:var(--shadow);transition:box-shadow .2s,transform .2s}
+  .t-card:hover{box-shadow:var(--shadow),var(--shadow-hover);transform:translateY(-2px)}
+  .t-card .ic{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#ffe0e7,#ffd0da);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
+  .t-card h3{margin-bottom:8px}
+  .t-card p{color:var(--ink-2);font-size:14px}
+  @media (max-width:860px){.trio{grid-template-columns:1fr}}
+
+  /* Greeting */
+  .greet-sec{background:var(--surface)}
+  .greet{max-width:780px;margin-top:24px;font-size:18px;line-height:1.75;color:var(--ink-2)}
+  .greet p{margin-bottom:1em}
+  .sign{display:block;margin-top:22px;font-weight:700;color:var(--ink);letter-spacing:-.3px}
+
+  /* Host card — Representative */
+  .host{display:grid;grid-template-columns:280px 1fr;gap:40px;margin-top:36px;align-items:start;background:var(--white);border-radius:20px;padding:36px;box-shadow:var(--shadow)}
+  .host .av{width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,var(--rausch),var(--rausch-deep));display:grid;place-items:center;color:#fff;font-size:72px;font-weight:700;justify-self:center}
+  .host .badge{display:inline-flex;gap:6px;align-items:center;background:var(--surface-2);border-radius:16px;padding:6px 12px;font-size:13px;font-weight:600;margin-bottom:12px}
+  .host .badge::before{content:"★";color:var(--rausch)}
+  .host h3{margin-bottom:6px;font-size:28px}
+  .host .role{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .tl{margin-top:16px}
+  .tl .row{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:12px 0;border-top:1px solid var(--border-soft);font-size:14px}
+  .tl .row:last-child{border-bottom:1px solid var(--border-soft)}
+  .tl .y{font-weight:700}
+  .tl .t{color:var(--ink-2)}
+  @media (max-width:780px){.host{grid-template-columns:1fr;text-align:center}.host .av{width:160px;height:160px;font-size:56px}}
+
+  /* Reviews = why us */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+  .review{padding:24px 0}
+  .review .stars{color:var(--ink);font-size:14px;font-weight:700;margin-bottom:10px}
+  .review b{display:block;font-size:16px;font-weight:600;margin-bottom:6px;letter-spacing:-.18px}
+  .review p{color:var(--ink-2);font-size:14px;line-height:1.55}
+  @media (max-width:860px){.reviews{grid-template-columns:1fr}}
+
+  /* Contact */
+  .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+  .c-card{background:var(--white);border-radius:20px;padding:36px;box-shadow:var(--shadow)}
+  .tel{display:block;font-size:34px;font-weight:700;letter-spacing:-.5px;color:var(--ink);margin:4px 0}
+  .tel:hover{color:var(--rausch);text-decoration:none}
+  .kv{display:grid;grid-template-columns:80px 1fr;gap:8px 16px;margin-top:10px;font-size:14px;color:var(--ink-2);line-height:1.6}
+  .kv dt{font-weight:600;color:var(--ink)}
+  .map{width:100%;height:100%;min-height:380px;border:0;border-radius:20px}
+  @media (max-width:780px){.c-grid{grid-template-columns:1fr}.map{min-height:260px}}
+
+  footer{background:var(--white);padding:48px 28px;border-top:1px solid var(--border-soft);text-align:center;color:var(--muted);font-size:13px}
+  footer strong{display:block;color:var(--ink);font-size:15px;margin-bottom:6px}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:.7s}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="logo">
+      <svg viewBox="0 0 32 32"><path d="M16 1C8.27 1 2 7.27 2 15c0 4.82 2.45 9.07 6.18 11.58.68-1.18 1.8-3.24 3.24-5.58-2.15-3.5-3.42-6.06-3.42-7.5 0-4.4 3.58-8 8-8s8 3.6 8 8c0 1.44-1.27 4-3.42 7.5 1.44 2.34 2.56 4.4 3.24 5.58C27.55 24.07 30 19.82 30 15c0-7.73-6.27-14-14-14zm0 18.5c2.28-3.27 3.5-5.4 3.5-6.5 0-1.93-1.57-3.5-3.5-3.5S12.5 11.07 12.5 13c0 1.1 1.22 3.23 3.5 6.5zM16 30c-.93 0-2.06-1.53-3.76-4.5C10.43 22.06 9 19.5 9 17.5c0-.96.38-1.88 1.07-2.57C11.35 18.48 13.5 22 16 25.5c2.5-3.5 4.65-7.02 5.93-10.57.69.69 1.07 1.61 1.07 2.57 0 2-1.43 4.56-3.24 8-1.7 2.97-2.83 4.5-3.76 4.5z"/></svg>
+      <span>なかね</span>
+    </div>
+    <ul>
+      <li><a class="l" href="#services">サービス</a></li>
+      <li><a class="l" href="#office">事務所</a></li>
+      <li><a class="l" href="#greeting">ごあいさつ</a></li>
+      <li><a class="btn rausch" href="#contact">相談を予約</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Belong with numbers you trust.</span>
+    <h1>信頼できる数字と、<br>ちゃんと話せる税理士を。</h1>
+    <p class="lead">「適正な規模」「十分な余裕」「幅広い連携力」。駒込・中根税務会計事務所が、あなたの事業にちょうどいい伴走を。</p>
+
+    <div class="search reveal" role="search">
+      <div class="cell"><b>業種</b><span>法人・個人・相続</span></div>
+      <div class="cell"><b>相談内容</b><span>税務／創業／承継</span></div>
+      <div class="cell"><b>希望日</b><span>今日でも明日でも</span></div>
+      <button class="btn-search" onclick="location.href='#contact'">相談する</button>
+    </div>
+
+    <div class="cats" role="tablist">
+      <div class="cat active"><div class="ic">📊</div><div class="lb">税務・会計</div></div>
+      <div class="cat"><div class="ic">💻</div><div class="lb">自計化・DX</div></div>
+      <div class="cat"><div class="ic">🚀</div><div class="lb">創業支援</div></div>
+      <div class="cat"><div class="ic">📈</div><div class="lb">経営支援</div></div>
+      <div class="cat"><div class="ic">🏛️</div><div class="lb">相続・承継</div></div>
+      <div class="cat"><div class="ic">🤝</div><div class="lb">士業連携</div></div>
+      <div class="cat"><div class="ic">📑</div><div class="lb">書面添付</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — listing grid -->
+<section id="services">
+  <div class="wrap">
+    <h2>駒込で人気のサービス</h2>
+    <p class="body" style="margin-top:8px">お客様ごとのご要望に合わせて、最適な組み合わせでお届けします。</p>
+    <div class="grid">
+      <article class="listing reveal">
+        <div class="photo"><div class="emoji">📊</div><div class="heart">♡</div></div>
+        <div class="meta"><h3>税務・会計</h3><div class="rating">4.98</div></div>
+        <div class="desc">毎月巡回監査／決算・各種申告／税務調査対応／書面添付</div>
+        <div class="price"><b>Monthly</b> · 継続支援プラン</div>
+      </article>
+      <article class="listing reveal">
+        <div class="photo"><div class="emoji">💻</div><div class="heart">♡</div></div>
+        <div class="meta"><h3>自計化・DX支援</h3><div class="rating">4.95</div></div>
+        <div class="desc">仕訳自動化／即時データ確認／リモート対応</div>
+        <div class="price"><b>Setup</b> · 導入から定着まで</div>
+      </article>
+      <article class="listing reveal">
+        <div class="photo"><div class="emoji">🚀</div><div class="heart">♡</div></div>
+        <div class="meta"><h3>創業支援</h3><div class="rating">4.97</div></div>
+        <div class="desc">事業計画・融資・登記・許認可までワンストップ</div>
+        <div class="price"><b>Launch</b> · 創業期の丸ごと伴走</div>
+      </article>
+      <article class="listing reveal">
+        <div class="photo"><div class="emoji">📈</div><div class="heart">♡</div></div>
+        <div class="meta"><h3>経営支援</h3><div class="rating">4.96</div></div>
+        <div class="desc">経営計画・財務診断・資金繰り・リスク管理</div>
+        <div class="price"><b>Growth</b> · 次の一手を設計</div>
+      </article>
+      <article class="listing reveal">
+        <div class="photo"><div class="emoji">🏛️</div><div class="heart">♡</div></div>
+        <div class="meta"><h3>相続・事業承継</h3><div class="rating">4.99</div></div>
+        <div class="desc">相続税試算／株価計算／遺言・分割協議書／承継計画</div>
+        <div class="price"><b>Legacy</b> · 次世代への橋渡し</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Principles -->
+<section id="principles">
+  <div class="wrap">
+    <span class="eyebrow">Our Commitments</span>
+    <h2>お約束する、三つのこと。</h2>
+    <div class="trio">
+      <div class="t-card reveal"><div class="ic">⚖️</div><h3>適正な規模</h3><p>小さすぎず、大きすぎず。お客様一社ずつに、丁寧に目が届く組織を保ちます。</p></div>
+      <div class="t-card reveal"><div class="ic">⏱️</div><h3>十分な余裕</h3><p>経験豊富な職員が日常を担当し、所長がフォロー。新規・緊急も原則当日対応。</p></div>
+      <div class="t-card reveal"><div class="ic">🔗</div><h3>幅広い連携力</h3><p>士業・大学教授・金融機関まで。税務を超えた相談にもワンストップで。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Greeting -->
+<section class="greet-sec" id="greeting">
+  <div class="wrap">
+    <span class="eyebrow">A note from the host</span>
+    <h2>代表あいさつ</h2>
+    <div class="greet reveal">
+      <p>所長の中根は、気力・体力・実力の充実した税理士です。経験豊富な職員が日常業務を担当し、所長は余裕を持って全体をフォローする体制を整えております。</p>
+      <p>新規のご紹介や緊急案件につきましても、原則として当日、遅くとも翌日には対応させていただいております。</p>
+      <p>各士業・大学教授・金融機関との関係性が密接であり、税務に限らず幅広いご相談に対応できる体制を備えております。</p>
+      <p>「適正な規模」「十分な余裕」「幅広い連携力」——お客様にとって最も安心できる税理士事務所を目指しております。</p>
+      <span class="sign">— 代表税理士　中根 武</span>
+    </div>
+  </div>
+</section>
+
+<!-- Host card -->
+<section id="office">
+  <div class="wrap">
+    <span class="eyebrow">Meet your host</span>
+    <h2>代表税理士　中根 武</h2>
+    <div class="host reveal">
+      <div class="av">中</div>
+      <div>
+        <span class="badge">Superhost · since 1998</span>
+        <h3>Nakane, Takeshi</h3>
+        <div class="role">税理士番号 79086 ／ 豊島税理士会 ／ TKC全国会</div>
+        <p class="body">1965年生まれ。明治大学経営学部・大学院、拓殖大学大学院で経営・経済を修めたのち、1998年に駒込で開業。いまも駒込の地から、中小企業・個人事業主を支え続けています。</p>
+        <div class="tl">
+          <div class="row"><div class="y">1988</div><div class="t">明治大学経営学部経営学科 卒業</div></div>
+          <div class="row"><div class="y">1990</div><div class="t">明治大学大学院経営学研究科博士前期課程 修了</div></div>
+          <div class="row"><div class="y">1992</div><div class="t">拓殖大学大学院経済学研究科博士前期課程 修了</div></div>
+          <div class="row"><div class="y">1998</div><div class="t">税理士事務所 開業</div></div>
+          <div class="row"><div class="y">1999</div><div class="t">TKC全国会 入会</div></div>
+          <div class="row"><div class="y">2015</div><div class="t">公益社団法人豊島法人会 支部長常任理事</div></div>
+          <div class="row"><div class="y">2025</div><div class="t">公益社団法人豊島法人会 副会長就任</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section>
+  <div class="wrap">
+    <h2>★ 4.98 · 選ばれる六つの理由</h2>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><b>素早い問題解決</b><p>走りながら、最短距離で答えを。新規・緊急も当日対応の体制。</p></div>
+      <div class="review"><div class="stars">★★★★★</div><b>最適な士業の紹介</b><p>弁護士・司法書士・社労士など、ご相談内容に合う専門家を即アサイン。</p></div>
+      <div class="review"><div class="stars">★★★★★</div><b>大学教授のサポート</b><p>各分野の研究者ネットワークで、専門的な裏付けを。</p></div>
+      <div class="review"><div class="stars">★★★★★</div><b>最新テクノロジー</b><p>自動化・クラウドで、記帳から申告までをスマートに。</p></div>
+      <div class="review"><div class="stars">★★★★★</div><b>金融機関との信頼</b><p>長年の取引実績で、資金調達の相談もスムーズに。</p></div>
+      <div class="review"><div class="stars">★★★★★</div><b>電子証明付き申告</b><p>全社で電子証明付きの電子申告に対応しています。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="greet-sec">
+  <div class="wrap">
+    <span class="eyebrow">Reserve your spot</span>
+    <h2>気軽に、ご相談を。</h2>
+    <p class="body" style="margin-top:10px">駒込駅から徒歩3〜5分。予約不要の電話相談、メール相談も歓迎です。</p>
+    <div class="c-grid">
+      <div class="c-card reveal">
+        <h3>お電話</h3>
+        <a class="tel" href="tel:+81339458594">03-3945-8594</a>
+        <a class="tel" href="tel:+81339458597">03-3945-8597</a>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">FAX：03-3945-8541</div>
+        <h3 style="margin-top:24px">所在地</h3>
+        <dl class="kv">
+          <dt>住所</dt><dd>〒170-0003 東京都豊島区駒込1-12-16<br>レジデンス六義園 1F</dd>
+          <dt>最寄駅</dt><dd>JR駒込駅 南口 徒歩5分／南北線 駒込駅 1番出口 徒歩3分</dd>
+        </dl>
+        <div style="margin-top:22px"><a class="btn rausch" href="mailto:info@nakanekaikei.co.jp">メールで相談する</a></div>
+      </div>
+      <iframe class="map reveal" loading="lazy" src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%B1%8A%E5%B3%B6%E5%8C%BA%E9%A7%92%E8%BE%BC1-12-16&hl=ja&z=16&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>中根税務会計事務所 ／ 有限会社ティー・エヌ・コンサルティング</strong>
+  〒170-0003 東京都豊島区駒込1-12-16 レジデンス六義園 1F ／ TEL 03-3945-8594<br>
+  © <span id="y"></span> Nakane Tax &amp; Accounting Office
+</footer>
+
+<script>
+  document.getElementById('y').textContent=new Date().getFullYear();
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('.cat').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));c.classList.add('active')}));
+</script>
+</body>
+</html>

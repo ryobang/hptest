@@ -1,0 +1,67 @@
+/* jp-ui-contracts: base + mixed-script + headings
+   From: .claude/resources/jp-ui-contracts/recipes/
+   日本語本文・見出し・和欧混植の崩れを抑えるための共通契約。 */
+
+html:lang(ja) {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  font-kerning: auto;
+  font-feature-settings: "palt" 1;
+  text-autospace: normal;
+}
+
+:lang(ja) body {
+  text-rendering: optimizeLegibility;
+}
+
+:lang(ja) p,
+:lang(ja) li,
+:lang(ja) dd {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+:lang(ja) :where(article, .prose, .content, .greet, .greeting) p {
+  max-width: 42em;
+}
+
+:lang(ja) h1,
+:lang(ja) h2,
+:lang(ja) h3,
+:lang(ja) h4 {
+  line-break: strict;
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+  font-kerning: auto;
+}
+
+/* 和文の最低可読ラインハイト。ブランド表現で極端に詰めすぎた値を補正する。
+   ただし .display-latin など英字主体の箇所ではオーバーライド可能。*/
+:lang(ja) h1 { line-height: 1.18; }
+:lang(ja) h2 { line-height: 1.22; }
+:lang(ja) h3 { line-height: 1.35; }
+:lang(ja) h4 { line-height: 1.45; }
+
+:lang(ja) em,
+:lang(ja) strong,
+:lang(ja) a,
+:lang(ja) .latin,
+:lang(ja) .product-name {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+/* 本文の letter-spacing は詰めすぎない(和文が窮屈になる)。
+   必要に応じて .latin クラスで欧文のみ tracking を変える。*/
+:lang(ja) p,
+:lang(ja) li {
+  letter-spacing: 0;
+}
+
+/* リンクのアンダーライン位置を下げ、和文で潰れないように。*/
+:lang(ja) a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}

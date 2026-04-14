@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中根税務会計事務所 — Redesign Portal</title>
+<link rel="stylesheet" href="ja-contracts.css">
+<style>
+  :root{
+    --bg:#0b0b0f;
+    --bg-2:#15151c;
+    --card:#1c1c25;
+    --line:rgba(255,255,255,.12);
+    --ink:#ffffff;
+    --muted:#a4a4ae;
+    --accent:#ffcc33;
+    --font:"Inter","Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+  a{color:inherit;text-decoration:none}
+
+  .shell{display:grid;grid-template-columns:320px 1fr;height:100vh}
+  aside{background:var(--bg-2);border-right:1px solid var(--line);padding:28px 22px;overflow-y:auto}
+  main{display:flex;flex-direction:column}
+  .topbar{display:flex;gap:10px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.4);backdrop-filter:blur(8px);flex-wrap:wrap}
+  .topbar .pill{display:inline-flex;gap:6px;align-items:center;padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:12px;color:var(--muted)}
+  .topbar .pill b{color:var(--ink)}
+  .topbar .spacer{flex:1}
+  .topbar a.ext{padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;background:var(--accent);color:#000}
+
+  .frame-wrap{flex:1;position:relative;background:#000}
+  iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+
+  .brand{display:flex;gap:12px;align-items:center;margin-bottom:22px}
+  .brand .mk{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#ff385c,#0071e3);display:grid;place-items:center;font-weight:800;font-size:18px}
+  .brand h1{font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+  .brand p{font-size:12px;color:var(--muted)}
+
+  .section-title{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin:22px 4px 8px;font-weight:700}
+
+  .list{display:flex;flex-direction:column;gap:4px}
+  .item{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;cursor:pointer;border:1px solid transparent;transition:background .15s,border-color .15s;background:transparent}
+  .item:hover{background:var(--card);border-color:var(--line)}
+  .item.active{background:var(--card);border-color:var(--accent)}
+  .item .ic{width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff}
+  .item b{display:block;font-size:14px;font-weight:600;letter-spacing:-.01em}
+  .item span{display:block;font-size:11px;color:var(--muted)}
+  .item .go{font-size:12px;color:var(--muted)}
+  .item:hover .go{color:var(--ink)}
+
+  .i-apple .ic{background:#000}
+  .i-claude .ic{background:#c96442}
+  .i-meta .ic{background:linear-gradient(135deg,#0064e0,#8a3ffc,#f92672)}
+  .i-verge .ic{background:#fa4616}
+  .i-ferrari .ic{background:#ff2800}
+  .i-zapier .ic{background:#ff4f00}
+  .i-airbnb .ic{background:#ff385c}
+  .i-pinterest .ic{background:#e60023}
+  .i-notion .ic{background:#000;color:#fff;font-family:"Times New Roman",serif}
+
+  .footer{padding:18px 4px;color:var(--muted);font-size:11px;border-top:1px solid var(--line);margin-top:22px}
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+    aside{height:auto;max-height:46vh}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside>
+    <div class="brand">
+      <div class="mk">N</div>
+      <div>
+        <h1>中根税務会計事務所</h1>
+        <p>Redesign Portal · 9 design systems</p>
+      </div>
+    </div>
+
+    <div class="section-title">Brand libraries (awesome-design-md)</div>
+    <div class="list">
+      <div class="item i-apple" data-src="apple.html"><div class="ic">A</div><div><b>Apple</b><span>黒×ライトグレー、ピルCTA</span></div><div class="go">▸</div></div>
+      <div class="item i-claude" data-src="claude.html"><div class="ic">C</div><div><b>Claude</b><span>Parchment、セリフ、テラコッタ</span></div><div class="go">▸</div></div>
+      <div class="item i-zapier" data-src="zapier.html"><div class="ic">Z</div><div><b>Zapier</b><span>クリーム、オレンジ、Inter</span></div><div class="go">▸</div></div>
+      <div class="item i-airbnb" data-src="airbnb.html"><div class="ic">A</div><div><b>Airbnb</b><span>Rausch、リスティングカード</span></div><div class="go">▸</div></div>
+      <div class="item i-pinterest" data-src="pinterest.html"><div class="ic">P</div><div><b>Pinterest</b><span>赤、Masonry ピンボード</span></div><div class="go">▸</div></div>
+      <div class="item i-notion" data-src="notion.html"><div class="ic">N</div><div><b>Notion</b><span>ページ + DB、薄枠</span></div><div class="go">▸</div></div>
+    </div>
+
+    <div class="section-title">Hand-crafted (no library md)</div>
+    <div class="list">
+      <div class="item i-meta" data-src="meta.html"><div class="ic">M</div><div><b>Meta</b><span>グラデ、丸角、ゴシック</span></div><div class="go">▸</div></div>
+      <div class="item i-verge" data-src="verge.html"><div class="ic">V</div><div><b>The Verge</b><span>雑誌的、Ticker、ハイライト</span></div><div class="go">▸</div></div>
+      <div class="item i-ferrari" data-src="ferrari.html"><div class="ic">F</div><div><b>Ferrari</b><span>Rosso、ゴールド、斜体</span></div><div class="go">▸</div></div>
+    </div>
+
+    <div class="footer">
+      jp-ui-contracts (ja-contracts.css) 読込済み。<br>
+      収集データは <code>raw/content.md</code>。
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <span class="pill">現在: <b id="now">Apple</b></span>
+      <span class="pill" id="viewinfo">apple.html</span>
+      <span class="spacer"></span>
+      <a class="ext" id="openext" target="_blank">新規タブで開く ↗</a>
+    </div>
+    <div class="frame-wrap">
+      <iframe id="frame" src="apple.html" title="Preview"></iframe>
+    </div>
+  </main>
+</div>
+
+<script>
+  const items=document.querySelectorAll('.item');
+  const frame=document.getElementById('frame');
+  const now=document.getElementById('now');
+  const info=document.getElementById('viewinfo');
+  const ext=document.getElementById('openext');
+  items[0].classList.add('active');
+  ext.href=items[0].dataset.src;
+  items.forEach(it=>{
+    it.addEventListener('click',()=>{
+      items.forEach(x=>x.classList.remove('active'));
+      it.classList.add('active');
+      const src=it.dataset.src;
+      frame.src=src;
+      now.textContent=it.querySelector('b').textContent;
+      info.textContent=src;
+      ext.href=src;
+    });
+  });
+</script>
+</body>
+</html>
