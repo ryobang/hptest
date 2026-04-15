@@ -1,0 +1,135 @@
+/* =========================================================
+   mobile-fixes.css
+   スマホ表示の横断的な補正。各HTMLに <link> を追加するだけで
+   10バージョンすべてのモバイル崩れを抑える。
+   ========================================================= */
+
+html,body{overflow-x:hidden}
+img,iframe,video,svg{max-width:100%;height:auto}
+iframe{width:100%}
+table{max-width:100%}
+
+/* ---- スマホ全般 (≤820px) ---- */
+@media (max-width:820px){
+  /* ナビ内のリンク列を折り返し可にして、はみ出しを防ぐ */
+  nav ul,
+  nav .inner,
+  nav.topbar ul,
+  nav.gn .in,
+  nav.topbar,
+  .topbar .inner,
+  .topbar .nav-in,
+  .nav-in{flex-wrap:wrap}
+
+  /* 2〜4カラムのグリッドを 1列に寄せる (よく使うパターン) */
+  .grid3,.pillars,.trio,.pillars-grid,
+  .hero .wrap,
+  .about .row,.about-row,
+  .row:not(.p-grid):not(.db-row):not(.db-head),
+  .c-grid,.contact-grid,.cars,.tiles,
+  .pillar-grid,.tiles,.feats,.svc,.specs,
+  .r-grid,.rooms,.reviews,.trio,
+  .host,.panel-grid,
+  .mag,.svc-tiles{grid-template-columns:1fr !important}
+
+  /* Bootstrap/Kendo系の絶対幅テーブルを防ぐ */
+  .tbl,.info-kv,.info{display:block;overflow-x:auto}
+
+  /* セクション余白を控えめに */
+  section{padding:64px 20px !important}
+  .hero{padding:72px 20px 56px !important;min-height:auto !important}
+
+  /* 見出しを読みやすいサイズに(clampの最小が大きすぎる箇所を補正) */
+  h1{font-size:clamp(30px,8.5vw,44px) !important;line-height:1.18 !important}
+  h2{font-size:clamp(26px,7vw,36px) !important;line-height:1.22 !important}
+  h3{font-size:clamp(18px,5vw,22px) !important;line-height:1.35 !important}
+
+  /* 本文の行間は和文向けに広め */
+  p,li{line-height:1.85}
+
+  /* 大きいTEL表示が画面幅を超えないように */
+  .tel,.tel-big,.c-tel,.kpi .n{font-size:28px !important;letter-spacing:-.01em !important}
+
+  /* 地図最低高さを縮める */
+  .map,.info .map,.c-card iframe,iframe.map,.info-card.map{min-height:240px !important}
+  .info-card.map iframe{min-height:240px !important}
+
+  /* gap調整 */
+  .wrap,section .inner,section .wrap{padding-left:0;padding-right:0}
+
+  /* ギャラリーの非対称グリッドを2列化 */
+  .gal,.gal-grid{grid-template-columns:repeat(2,1fr) !important;grid-auto-rows:130px !important}
+  .gal a:nth-child(n),.gal-grid a:nth-child(n){grid-column:span 1 !important;grid-row:span 1 !important}
+  .gal a:nth-child(1),.gal-grid a:nth-child(1){grid-column:span 2 !important}
+
+  /* Pinterest masonry: 2列まで */
+  .board{column-count:2 !important}
+
+  /* ヒーローのpre系padding圧縮 */
+  .hero,.hero .in,.hero .wrap,.hero .inner{padding-left:20px;padding-right:20px}
+
+  /* Timeline 左ラベル幅を狭く */
+  .tl .row,.timeline .row{grid-template-columns:80px 1fr !important;gap:14px !important}
+  .tl .y{padding:10px 12px !important;font-size:12px !important}
+  .tl .t{padding:10px 14px !important;font-size:13px !important}
+
+  /* 情報テーブル: 見出しセルを上に積む */
+  .info-tbl,.info-tbl tbody,.info-tbl tr{display:block;width:100%}
+  .info-tbl tr{margin-bottom:10px;border-bottom:1px solid rgba(0,0,0,.08);padding-bottom:8px}
+  .info-tbl th,.info-tbl td{display:block !important;width:100% !important;padding:8px 12px !important;border:0 !important}
+  .info-tbl th{background:transparent !important;color:inherit !important;font-size:11px !important;letter-spacing:.12em !important;padding-bottom:2px !important;opacity:.6}
+
+  /* FX2/TKC系のサイドバーは畳む(ダッシュボード不要) */
+  aside.side{display:none !important}
+  .app,.layout{grid-template-columns:1fr !important}
+
+  /* ニュースTicker系をpadding低減 */
+  .news .in,.sb,.util .in{padding:8px 12px !important;font-size:11px !important}
+
+  /* Footer 1列化 */
+  footer .f-in,.f-in{grid-template-columns:1fr !important;gap:24px !important}
+
+  /* Meta gradient heroの余白 */
+  .hero .wrap{gap:32px !important}
+
+  /* ナビのリンクが多すぎる時、小ボタンを非表示 */
+  nav.topbar a.l,nav.gn a,nav .l{font-size:12px !important}
+  .nav-in ul{gap:8px !important}
+
+  /* SVGやCDN画像の縦横比が潰れないように */
+  .listing .photo,.pillar,.tile,.dish,.t-card,.pillar,.ph,.art{aspect-ratio:auto !important}
+
+  /* はみ出しをさらに封じる */
+  *{max-width:100%}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+}
+
+/* ---- ごく小さい端末 (≤480px) ---- */
+@media (max-width:480px){
+  section{padding:48px 16px !important}
+  .hero{padding:56px 16px 40px !important}
+  h1{font-size:30px !important;line-height:1.2 !important}
+  h2{font-size:24px !important}
+  h3{font-size:18px !important}
+  p,li{font-size:14px}
+
+  .gal,.gal-grid{grid-template-columns:1fr !important;grid-auto-rows:auto !important}
+  .gal a,.gal-grid a{aspect-ratio:4/3}
+  .gal a:nth-child(1),.gal-grid a:nth-child(1){grid-column:span 1 !important}
+
+  .board{column-count:1 !important}
+
+  /* CTA類は縦積み&全幅 */
+  .ctas,.cta,.hero .cta{flex-direction:column}
+  .ctas .pill,.ctas .btn,.cta .btn,.cta .pill{width:100%;justify-content:center;text-align:center}
+
+  /* ナビの長いリストは2行まで許容、長すぎる項目は小さく */
+  nav ul,nav.topbar ul,.nav-in ul{font-size:11px}
+
+  .tel,.tel-big,.c-tel{font-size:24px !important}
+}
+
+/* ---- Safari 100vhバグ対策 ---- */
+@supports (height:100dvh){
+  .hero{min-height:auto}
+}
